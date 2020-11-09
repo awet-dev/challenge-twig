@@ -1,14 +1,11 @@
 <?php
 
-
 namespace App\Entity;
 
-
-class Logger implements Transform
+class Logger
 {
-    public function transform(string $string): string
-    {
-        // TODO: Implement transform() method.
-
+    public function logMsg() {
+        $logger = new \Monolog\Logger('logger');
+        $logger->info("it works");
     }
 }
