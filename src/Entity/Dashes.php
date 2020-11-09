@@ -4,12 +4,12 @@
 namespace App\Entity;
 
 
-class Capitalize implements Transform
+class Dashes implements Transform
 {
     public function transform(string $string): string
     {
         // TODO: Implement transform() method.
-        //Split int char array
-        return strtoupper($string);
+        $words = explode(" ", $string);
+        return implode("-", $words);
     }
 }
