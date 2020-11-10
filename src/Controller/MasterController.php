@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MasterController extends AbstractController
 {
     /**
-     * @Route("/", name="master")
+     * @Route("/master", name="master")
      * @param Request $request
      * @return Response
      * @throws Exception
@@ -49,5 +49,14 @@ class MasterController extends AbstractController
         }
     }
 
+    /**
+    * @Route("/", name="homepage")
+    */
+    public function firstPage(): Response
+    {
+        return $this->render('master/homePage.html.twig', [
+            'name' => 'LearningController'
+        ]);
+    }
 
 }
