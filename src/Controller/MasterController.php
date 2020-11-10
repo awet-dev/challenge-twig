@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Capitalize;
+use App\Entity\Dashes;
 use App\Entity\Master;
 use Exception;
 use Monolog\Handler\StreamHandler;
@@ -22,17 +23,30 @@ class MasterController extends AbstractController
      */
     public function index(Request $request): Response
     {
-        $userInput = $request->get('input');
-        $transform = new Capitalize();
+        if ($request->get('input') && $request->get('class')) {
+            $userInput = $request->get('input');
 
-        $logger = new Logger('Master');
-        $logger->pushHandler(new StreamHandler(__DIR__ . '/../../var/log/info.log', Logger::INFO));
+            if ($request->get('class') == 'capitalize') {
+                $transform = new Capitalize();
+            } else {
+                $transform = new Dashes();
+            }
 
-        $master = new Master($transform, $logger, $userInput);
-        $userInput = $master->getInput();
-        return $this->render('master/index.html.twig', [
-            'massage' => $userInput,
-        ]);
+            $logger = new Logger('Master');
+            $logger->pushHandler(new StreamHandler(__DIR__ . '/../../var/log/info.log', Logger::INFO));
+
+            $master = new Master($transform, $logger, $userInput);
+            $userInput = $master->getInput();
+
+            return $this->render('master/index.html.twig', [
+                'massage' => $userInput,
+            ]);
+
+        } else {
+            return $this->render('master/index.html.twig', [
+                'massage' => "",
+            ]);
+        }
     }
 
 
