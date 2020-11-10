@@ -3,10 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="../public/css/style.css">
+    {% endblock %}
 </head>
 <body>
-{% block body %}{% endblock %}
+{% block body %} {% endblock %}
+{% block menu %}
+    <style>
+        ul { text-align: left}
+    </style>
+    <ul>
+        <li><a href="{{ path('homepage') }}">Home Page</a></li>
+        <li><a href="{{ path('master') }}">Master Page</a></li>
+    </ul>
+{% endblock %}
+<style>
+    footer {text-align: center}
+</style>
+<footer> © Becode </footer>
 {% block javascripts %}{% endblock %}
 </body>
 </html>
