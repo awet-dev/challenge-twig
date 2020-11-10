@@ -26,9 +26,9 @@ class MasterController extends AbstractController
         if ($request->get('input') && $request->get('class')) {
             $userInput = $request->get('input');
 
-            if ($request->get('class') == 'capitalize') {
+            if ($request->get('class') == 'Capitalize') {
                 $transform = new Capitalize();
-            } else {
+            } elseif($request->get('class') == 'Dashes') {
                 $transform = new Dashes();
             }
 
