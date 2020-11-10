@@ -9,12 +9,10 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/challeng-twig/src/Controller/MasterController.php'|file_link(0) }}">src/Controller/MasterController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/challeng-twig/templates/master/index.html.twig'|file_link(0) }}">templates/master/index.html.twig</a></code></li>
-    </ul>
+    <p>{{ massage }}</p>
+    <form action="">
+        <input name="input" type="text" placeholder="Massage">
+        <input type="submit" value="Submit">
+    </form>
 </div>
 {% endblock %}

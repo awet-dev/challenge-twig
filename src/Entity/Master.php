@@ -1,8 +1,10 @@
 <?php
 
 declare(strict_types=1);
+
 namespace App\Entity;
 
+use Monolog\Logger;
 
 class Master
 {
@@ -11,15 +13,13 @@ class Master
     /**
      * Master constructor.
      * @param Transform $transform
-     * @param Capitalize $capitalize
      * @param Logger $logger
-     * @param Dashes $dashes
      * @param $userInput
      */
-    public function __construct(Transform $transform, Capitalize $capitalize, Logger $logger, Dashes $dashes, $userInput)
+    public function __construct(Transform $transform, Logger $logger, $userInput)
     {
         $this->userInput = $transform->transform($userInput);
-        $logger->logMsg($userInput);
+        $logger->info($this->userInput);
     }
 
     public function getInput() {
