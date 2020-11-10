@@ -4,8 +4,8 @@ namespace App\Entity;
 
 class Logger
 {
-    public function logMsg() {
+    public function logMsg($massage) {
         $logger = new \Monolog\Logger('logger');
-        $logger->info("it works");
+        $logger->info($massage);
     }
 }

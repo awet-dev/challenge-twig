@@ -9,7 +9,8 @@ class Dashes implements Transform
     public function transform(string $string): string
     {
         // TODO: Implement transform() method.
-        $words = explode(" ", $string);
-        return implode("-", $words);
+        //$words = explode(" ", $string);
+        //return implode("-", $words);
+        return str_replace(" ", "-", $string);
     }
 }
